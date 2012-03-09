@@ -13,4 +13,7 @@ Uses JQuery.
 ## Plans
 Consider JQueryUI or GameQuery.
 
-
+### Todo: 
+ * Add background, background-elements, foreground, and various menus and dialogs sandwiched between those. 
+ * Add start menu
+ * Add game-event structure

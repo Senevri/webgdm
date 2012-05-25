@@ -67,7 +67,7 @@ $(document).ready(function () {
 
             scene.End = function () {
                 scene.$container.html("");
-                scene.$container.addClass('hide');
+                scene.$container.parent().addClass('hide');
                 return true;
             }
             

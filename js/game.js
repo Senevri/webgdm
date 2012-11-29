@@ -1,7 +1,6 @@
 /* vim: set ts=2 sw=2 expandtab */ 
 $(document).ready(function () {
     "use strict";
-
     var root = this;
 
     var previousGame = root.Game;

@@ -9,6 +9,8 @@ $(document).ready(function () {
         _framerate: 30,
 
         _last_tick: 0,
+
+        //_heartbeat_queue: [], 
         
         _$fpscounter: $('<div id="fpscounter">Loading...</div>'),
         
@@ -34,6 +36,8 @@ $(document).ready(function () {
 
             if (delta<fpsdelay) { 
                 delta = fpsdelay + (fpsdelay-delta); 
+
+            // $.each(Game._heartbeat_queue, function (i, item) { item() });
             } else { delta = fpsdelay; }
 
             _timer = setTimeout(function () { Game.Heartbeat(); }, delta); 
@@ -94,6 +98,17 @@ $(document).ready(function () {
     Game.activescene.End();
     
     Game.Stop();
+
+    /*Game._heartbeat_queue.push(function () { 
+            $('#fpscounter').html('FPS: ' + 1000/Game.delta );
+    });
+    Game._heartbeat_queue.push(function () { 
+        var tokens = "|,/,-,\\".split(',');
+        $('#test').html(tokens[Game.last]);
+        Game.last += 1;
+        if (Game.last == 4) Game.last = 0;
+    });
+    */
 
     //for testing
     window.Game = Game;

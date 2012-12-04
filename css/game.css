@@ -40,3 +40,8 @@
 	height: 0px;
 	min-height: 0px;
 }
+
+.startmenu ul {
+	text-align: left;	
+	color: green;
+}

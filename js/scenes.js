@@ -9,8 +9,8 @@ $(document).ready(function () {
 	
 	
 	var limitRuntime = function (self, callback) {				
-			var index = Game._heartbeat_queue.length;
-			Game._heartbeat_queue.push(function () {
+		var index = Game._heartbeat_queue.length;
+		Game._heartbeat_queue.push(function () {
 			var _now = new Date().getTime();  
 			if (_now - self.startTime > 1000*self.runtime) {			
 				self.End();
@@ -24,6 +24,7 @@ $(document).ready(function () {
 				}
 			}
 		});
+		self.$container.click(function() { self.End() });
 	}
 	
 	Scenes.fn.limitRuntime = limitRuntime;
@@ -88,7 +89,7 @@ $(document).ready(function () {
 	Scenes.notImplementedYet = window.Game.BuildScene({
 		    	name: "third",      	
 	            type: "html",	            
-	            runtime: 2,
+	            runtime: 10,
 	            htmlcontent: "This feature hasn't been implemented yet", 
 	            Execute: limitRuntime
 	})

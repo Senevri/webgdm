@@ -24,7 +24,7 @@ $(document).ready(function () {
 				}
 			}
 		});
-		self.$container.click(function() { self.End() });
+		return Game._heartbeat_queue[index];
 	}
 	
 	Scenes.fn.limitRuntime = limitRuntime;
@@ -89,63 +89,16 @@ $(document).ready(function () {
 	Scenes.notImplementedYet = window.Game.BuildScene({
 		    	name: "third",      	
 	            type: "html",	            
-	            runtime: 10,
+	            runtime: 4,
 	            htmlcontent: "This feature hasn't been implemented yet", 
-	            Execute: limitRuntime
+	            Execute: function(self) {
+	            	self.timer = limitRuntime(self);
+	            	self.$container.click(function() { 
+						delete (self.timer); 
+						self.End(); 
+						});
+	            }
 	})
-		
-	var execJobOrTraining = function (self) {
-		for(var i in self.changes) {
-			window.Game.Girl[i] += self.changes[i];	
-		}
-		window.Game.Parent.Wealth += self.pay;
-		limitRuntime(self);
-	}
 	
-	Scenes.fn.BuildJob = function (data){
-		data.type = 'html';
-		data.runtime = 3;
-		data.Execute = Scenes.fn.execJobOrTraining;
-		data.containerstyle ="";
-		data.containerclass = "jobscene";
-		return data;
-	}
-	
-	Scenes.fn.execJobOrTraining = execJobOrTraining;
-		
-	
-	
-	window.Scenes = Scenes;
-	
-	
-	//jobs.js
-	var Jobs = [
-	     {   
-        	name: "Farming",     	
-            changes: {stress: 2, energy: -2},
-            pay: 5,
-            htmlcontent: "Working hard at farming...",                 
-	     },
-	]
-	
-	var _Jobs = []
-	
-	for(var i in Jobs) {
-		_Jobs.push(window.Game.BuildScene(Scenes.fn.BuildJob(Jobs[i])));
-	}
-	window.Scenes.Jobs = _Jobs
-// end jobs.js
-	
-	// Girl here
-	window.Game.Girl = {
-		stress: 10, 
-		power: 10,
-		health: 10,
-		energy: 10,
-		empathy: 10
-	}; 
-	
-	window.Game.Parent = {}
-	window.Game.Parent.Income = 10;
-	window.Game.Parent.Wealth = 0;
+	window.Scenes = Scenes;	
 });

@@ -3,8 +3,10 @@
  */
 $(document).ready(function () {
 	"use strict";
-	var Scenes = []
+	var Scenes = {}
+	Scenes.fn = {}
 	var sceneIndex = 0;
+	
 	
 	var limitRuntime = function (self, callback) {
 				
@@ -25,6 +27,8 @@ $(document).ready(function () {
 		});
 	}
 	
+	Scenes.fn.limitRuntime = limitRuntime;
+	
 	var Scenedata = [
 		    {
 	    	    name: "first",
@@ -44,6 +48,7 @@ $(document).ready(function () {
 	        	name: "third",      	
 	            type: "html",	            
 	            runtime: 3,
+	            containerclass: 'jobscene',
 	            htmlcontent: "It's the final countdown!",                 
 	            Execute: function(self) {
 	            	limitRuntime(self, function () {
@@ -56,15 +61,15 @@ $(document).ready(function () {
 	
 	
 	
-	for(var i in Scenedata) {
+	/*for(var i in Scenedata) {
 		Scenes.push(window.Game.BuildScene(Scenedata[i]));		
-	}
-	window.Scenes = Scenes;
+	}*/
+	
 	//console.log(Scenes[0]);
 	//Scenes[0].Play();
 	console.log($('#menustyle').html());
 	
-	window.Game.BuildScene({		
+	Scenes.startMenu = window.Game.BuildScene({		
 		  name: "StartMenu",
 		  type: "html",
 		  containerstyle: $('#menustyle').html(),
@@ -74,9 +79,51 @@ $(document).ready(function () {
 		  		//alert("new game clicked!");
 		  		//Scenes[0].Play();
 		  		self.End();
-		  		});		
+		  	});		
 		  } 
 		}).Play();
+		
+	//Jobs here		
+		
+	var execJobOrTraining = function (self) {
+		for(var i in self.changes) {
+			window.Game.Girl[i] += self.changes[i];	
+		}
+		window.Game.Parent.Wealth += self.pay;
+		limitRuntime(self);
+	}
 	
+	Scenes.fn.execJobOrTraining = execJobOrTraining;
+		
+	var Jobs = [
+	     {   
+        	name: "Farming",     	
+            type: "html",
+            runtime:5,
+            changes: {stress: 2, energy: -2},
+            pay: 5,
+            htmlcontent: "Working hard at farming...",                 
+            Execute: execJobOrTraining
+	     },
+	]
 	
+	Scenes.Jobs = []
+	for(var i in Jobs) {
+		Scenes.Jobs.push(window.Game.BuildScene(Jobs[i]));
+	}
+	
+	window.Scenes = Scenes;
+	
+	// Girl here
+	window.Game.Girl = {
+		stress: 10, 
+		power: 10,
+		health: 10,
+		energy: 10,
+		empathy: 10
+	}; 
+	
+	window.Game.Parent = {}
+	window.Game.Parent.Income = 10;
+	window.Game.Parent.Wealth = 0;
 });

@@ -1,4 +1,12 @@
 /* scene replaces main view while it's visible */ 
+button {
+	min-width: 6em;
+}
+
+button:active {
+	-webkit-animation:buttonActive 1s;
+}
+
 #scenecontainer {
 	position: fixed;
 	background-color: rgba(0,0,0,0.4);
@@ -22,12 +30,10 @@
 #scene {
 	width: 10em;
 	height: 10em;
-	margin-top: 2em;;
+	margin-top: 2em;
 	margin-bottom: auto;
 	margin-left: auto;
 	margin-right: auto;
-	background-color: rgb(51, 0, 51);
-	color: #efe;
 }
 
 #fpscounter {
@@ -38,12 +44,21 @@
 }
 
 #chooseEvent:active {
-	-webkit-animation:buttonActive 0.3s;
+	-webkit-animation:buttonActive 1s;
 }
 
 ul#eventmenuitems {
 	list-style: none;	
-	
+	margin: 0px;
+}
+
+ul#eventmenuitems li {
+	cursor: pointer
+}
+
+ul#eventmenuitems li:hover {
+	text-decoration: bold;
+	color: blue;
 }
 
 @keyframes buttonActive
@@ -65,13 +80,21 @@ ul#eventmenuitems {
 }
 
 .jobscene {
-	width: 12em; 
+	width: 16em;
+	height: 9em;
+	padding: 2em;
+	color: black; 
 	background-color: #cfc;
 	text-align: center;
 }
 .joblist {
 	text-align: left;
-	color: black;
+	background-color: lightgreen;
 	width: 12em;
+	padding: 1em;
+}
+
+.joblist li {
+	color: green;
 }
 

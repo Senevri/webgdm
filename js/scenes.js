@@ -84,6 +84,14 @@ $(document).ready(function () {
 		}).Play();
 		
 	//Jobs here		
+	
+	Scenes.notImplementedYet = window.Game.BuildScene({
+		    	name: "third",      	
+	            type: "html",	            
+	            runtime: 2,
+	            htmlcontent: "This feature hasn't been implemented yet", 
+	            Execute: limitRuntime
+	})
 		
 	var execJobOrTraining = function (self) {
 		for(var i in self.changes) {
@@ -97,6 +105,8 @@ $(document).ready(function () {
 		data.type = 'html';
 		data.runtime = 3;
 		data.Execute = Scenes.fn.execJobOrTraining;
+		data.containerstyle ="";
+		data.containerclass = "jobscene";
 		return data;
 	}
 	

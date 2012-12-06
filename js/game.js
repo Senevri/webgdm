@@ -85,7 +85,8 @@ $(document).ready(function () {
                         		$scene.css(scene.containerstyle);
                         	}    
                        	}
-                       	if (undefined !== scene.containerclass) {                       		
+                       	if (undefined !== scene.containerclass) {
+                       		$scene.removeClass()                       		
                        		$scene.addClass(scene.containerclass);
                        	}
                         break;

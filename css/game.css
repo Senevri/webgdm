@@ -66,6 +66,12 @@ ul#eventmenuitems {
 
 .jobscene {
 	width: 12em; 
-	background: #cfc;
+	background-color: #cfc;
 	text-align: center;
 }
+.joblist {
+	text-align: left;
+	color: black;
+	width: 12em;
+}
+

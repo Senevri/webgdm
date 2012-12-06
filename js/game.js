@@ -134,7 +134,7 @@ $(document).ready(function () {
         Game.last += 1;
         if (Game.last == 4) Game.last = 0;
     }
-    Game._heartbeat_queue.push(rotator);
+    //Game._heartbeat_queue.push(rotator);
        
     Game.Start();  
     //for testing; might be redundant. 

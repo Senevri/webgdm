@@ -8,17 +8,16 @@ $(document).ready(function () {
 	var sceneIndex = 0;
 	
 	
-	var limitRuntime = function (self, callback) {
-				
+	var limitRuntime = function (self, callback) {				
 			var index = Game._heartbeat_queue.length;
 			Game._heartbeat_queue.push(function () {
 			var _now = new Date().getTime();  
 			if (_now - self.startTime > 1000*self.runtime) {			
 				self.End();
-				sceneIndex++;
+				/*sceneIndex++;
 				if (Scenes.length > sceneIndex) {
 					Scenes[sceneIndex].Play();
-				}
+				}*/
 				delete (Game._heartbeat_queue[index]);
 				if (undefined !== callback) {
 					callback();					
@@ -29,7 +28,8 @@ $(document).ready(function () {
 	
 	Scenes.fn.limitRuntime = limitRuntime;
 	
-	var Scenedata = [
+	/*
+	var example_Scenedata = [
 		    {
 	    	    name: "first",
 	            type: "html",
@@ -57,7 +57,7 @@ $(document).ready(function () {
 	            }
 	        }	
 	];
-	
+	*/
 	
 	
 	
@@ -93,26 +93,37 @@ $(document).ready(function () {
 		limitRuntime(self);
 	}
 	
+	Scenes.fn.BuildJob = function (data){
+		data.type = 'html';
+		data.runtime = 3;
+		data.Execute = Scenes.fn.execJobOrTraining;
+		return data;
+	}
+	
 	Scenes.fn.execJobOrTraining = execJobOrTraining;
 		
+	
+	
+	window.Scenes = Scenes;
+	
+	
+	//jobs.js
 	var Jobs = [
 	     {   
         	name: "Farming",     	
-            type: "html",
-            runtime:5,
             changes: {stress: 2, energy: -2},
             pay: 5,
             htmlcontent: "Working hard at farming...",                 
-            Execute: execJobOrTraining
 	     },
 	]
 	
-	Scenes.Jobs = []
-	for(var i in Jobs) {
-		Scenes.Jobs.push(window.Game.BuildScene(Jobs[i]));
-	}
+	var _Jobs = []
 	
-	window.Scenes = Scenes;
+	for(var i in Jobs) {
+		_Jobs.push(window.Game.BuildScene(Scenes.fn.BuildJob(Jobs[i])));
+	}
+	window.Scenes.Jobs = _Jobs
+// end jobs.js
 	
 	// Girl here
 	window.Game.Girl = {

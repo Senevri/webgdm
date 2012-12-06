@@ -43,13 +43,13 @@
 	
   </header>
   <div role="main" id="content">
-  	  <div id="test" style="margin-left: auto; margin-right: auto; width: 20em; text-align: center;">foo!</div>
+  	  <div id="test" style="margin-left: auto; margin-right: auto; width: 20em; text-align: center;"></div>
   	  <div id="menu">
   	  	<button id="chooseEvent">Events</button>
   	  	<ul id="eventmenuitems">
   	  		<li>Shop</li>
   	  		<li>Training</li>
-  	  		<li>Work</li>
+  	  		<li id="displayJobList" style="cursor: pointer;">Work</li>
   	  	</ul>
   	  </div>
 	  <div id="scenecontainer" class="hide">	  	  
@@ -81,6 +81,8 @@
   <script src="js/useful.js"></script>
   <script src="js/game.js"></script>
   <script src="js/scenes.js"></script>
+  <script src="js/menu.js"></script>
+  
   <!-- end dev scripts -->
   
   <!-- data blocks -->

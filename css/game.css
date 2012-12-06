@@ -28,8 +28,6 @@ button:active {
 }
 
 #scene {
-	width: 10em;
-	height: 10em;
 	margin-top: 2em;
 	margin-bottom: auto;
 	margin-left: auto;
@@ -96,5 +94,18 @@ ul#eventmenuitems li:hover {
 
 .joblist li {
 	color: green;
+}
+
+div.statistics {
+	padding: 1em;
+	text-align: left;
+	height: auto;
+	width: 80%;
+	background: lightgray;
+	margin-left: 20em;
+}
+
+.statistics ul {
+	width: 16em;
 }
 

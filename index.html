@@ -49,6 +49,8 @@
   	  	<button id="chooseEvent">Events</button>
   	  	-->
   	  	<ul id="eventmenuitems">
+  	  		<li id="displayStats"><button>Statistics</button></li>
+  	  		<li id="displayInventory"><button>Inventory</button></li>
   	  		<li id="displayShop"><button>Shop</button></li>
   	  		<li id="displayTrainingList"><button>Training</button></li>
   	  		<li id="displayJobList" ><button>Work</button></li>
@@ -104,6 +106,25 @@
   		<ul id="about">About</ul>
   	</list>
   	</div>  	
+  </script>
+  
+  <script type="text/template" id="StatsTemplate">
+  	
+  	<h3>Girl:</h3>
+  	<ul>
+  	  <li>Stress: {stress}</li>
+  	  <li>Power: {power}</li>
+  	  <li>Health: {health}</li>
+  	  <li>Energy: {energy}</li>
+  	  <li>Empathy: {empathy}</li>
+  	  </ul>
+  	
+  	<h3>Parent:</h3>
+  	<ul>
+  		<li>Wealth: {wealth}</li>
+  		<li>Income: {income}</li>
+  	</ul>
+  	
   </script>
   
   <!-- end data blocks -->

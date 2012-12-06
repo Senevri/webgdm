@@ -56,4 +56,20 @@ $(function () {
 		window.Scenes.notImplementedYet.Play();
 	});
 	
+	$('#displayStats').click(function () {
+		//var selector = generateSceneList(window.Scenes.Jobs);
+		//selector.Play();
+		//activateClickEvents(window.Scenes.Jobs);
+		window.Scenes.Statistics.Play();
+	});
+	
+	$('#displayInventory').click(function () {
+		//var selector = generateSceneList(window.Scenes.Jobs);
+		//selector.Play();
+		//activateClickEvents(window.Scenes.Jobs);
+		window.Scenes.notImplementedYet.Play();
+	});
+
+
+	
 })

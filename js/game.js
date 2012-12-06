@@ -68,7 +68,8 @@ $(document).ready(function () {
             scene.Play = function () {
                 $("#scenecontainer").removeClass('hide');
                 var $scene = $("#scene");
-                scene.$container = $scene;
+                $scene.unbind('click');
+            	scene.$container = $scene;
                 scene.startTime = Game._last_tick;
 
                 switch (scene.type) {                	

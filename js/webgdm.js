@@ -9,7 +9,7 @@ $(function () {
 		for(var i in self.changes) {
 			window.Game.Girl[i] += self.changes[i];	
 		}
-		window.Game.Parent.Wealth += self.pay;
+		window.Game.Parent.wealth += self.pay;
 		limitRuntime(self);
 	}
 	
@@ -54,8 +54,32 @@ $(function () {
 		empathy: 10
 	}; 
 	
-	window.Game.Parent = {}
-	window.Game.Parent.Income = 10;
-	window.Game.Parent.Wealth = 0;
+	window.Game.Parent = {
+		income: 10,
+		wealth: 0
+	}
 	
+	window.Scenes.Statistics = Game.BuildScene({
+			type: "html",
+			htmlcontent: $("#StatsTemplate").html(),
+			containerstyle: "",
+			containerclass: "statistics",
+			Execute: function (self) {
+				self.$container.click(function(){self.End()});
+				for (var i in Game.Girl) {
+					if (undefined != i) {
+						self.$container.html(
+							self.$container.html().replace('{' + i +'}', Game.Girl[i])
+						);
+					}
+				}
+				for (var i in Game.Parent) {
+					if (undefined != i) {
+						self.$container.html(
+							self.$container.html().replace('{' + i +'}', Game.Parent[i])
+						);
+					}
+				}
+			} 
+		});
 })

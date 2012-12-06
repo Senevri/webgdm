@@ -33,7 +33,7 @@ $(function () {
         	name: "Farming",     	
             changes: {stress: 2, energy: -2},
             pay: 5,
-            htmlcontent: "Working hard at farming...",                 
+            htmlcontent: "Working hard at farming... (could play an animation or show an image here)",                 
 	     },
 	]
 	

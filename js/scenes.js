@@ -71,8 +71,9 @@ $(document).ready(function () {
 		  htmlcontent: $('#startmenu').html(),
 		  Execute: function(self) {
 		  	$('#newgame').click(function () {
-		  		alert("new game clicked!");
-		  		Scenes[0].Play();
+		  		//alert("new game clicked!");
+		  		//Scenes[0].Play();
+		  		self.End();
 		  		});		
 		  } 
 		}).Play();

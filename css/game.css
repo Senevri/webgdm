@@ -34,6 +34,21 @@
 	color: green;
 }
 
+#chooseEvent:active {
+	-webkit-animation:buttonActive 0.3s;
+}
+
+ul#eventmenuitems {
+	list-style: none;	
+	
+}
+
+@keyframes buttonActive
+{
+	100%: -webkit-transform:scale(0.9);
+	
+}
+
 .hide {
 	display: none;
 	visibility: hidden;

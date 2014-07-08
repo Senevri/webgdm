@@ -6,16 +6,13 @@ $(document).ready(function () {
     var previousGame = root.Game;        
 
     var Game = {
-        _framerate: 30,
-
+    	_framerate: 30,
         _last_tick: 0,
-
         _heartbeat_queue: [], 
         
         _$fpscounter: $('<div id="fpscounter">Loading...</div>'),
         
         _timer: undefined,
-        
         _delta: 0, 
         
         _starttime: undefined,

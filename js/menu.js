@@ -43,17 +43,18 @@ $(function () {
 	});
 	
 	$('#displayTrainingList').click(function () {
-		//var selector = generateSceneList(window.Scenes.Jobs);
-		//selector.Play();
-		//activateClickEvents(window.Scenes.Jobs);
-		window.Scenes.notImplementedYet.Play();
+		var selector = generateSceneList(window.Scenes.Studies);
+		selector.Play();
+		activateClickEvents(window.Scenes.Studies);
+		//window.Scenes.notImplementedYet.Play();
 	});
 	
 	$('#displayShop').click(function () {
-		//var selector = generateSceneList(window.Scenes.Jobs);
-		//selector.Play();
-		//activateClickEvents(window.Scenes.Jobs);
-		window.Scenes.notImplementedYet.Play();
+		/*var selector = generateSceneList(window.Scenes.Shop);
+		selector.Play();
+		activateClickEvents(window.Scenes.Shop);*/
+		//window.Scenes.notImplementedYet.Play();
+		window.Scenes.Shop.Play();
 	});
 	
 	$('#displayStats').click(function () {

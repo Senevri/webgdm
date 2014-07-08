@@ -98,6 +98,7 @@
 	    background-color: #ccc;
 	    padding: 1em;	    
   </script>
+  
   <script type="text/template" id="startmenu">
   	<div>  	  	
   	<list class="startmenu">
@@ -108,8 +109,15 @@
   	</div>  	
   </script>
   
-  <script type="text/template" id="StatsTemplate">
-  	
+  <script type="text/template" id="ShopTemplate">
+  	<h3>Shop:</h3>
+  	<p>Welcome! What would you have?</p>
+  	<ul id="ShopItems">
+  		
+  	</ul>
+  </script>
+  
+  <script type="text/template" id="StatsTemplate">	
   	<h3>Girl:</h3>
   	<ul>
   	  <li>Stress: {stress}</li>
@@ -117,7 +125,11 @@
   	  <li>Health: {health}</li>
   	  <li>Energy: {energy}</li>
   	  <li>Empathy: {empathy}</li>
-  	  </ul>
+  	</ul>
+  	<h4>Items:</h4>
+  	<ul id="GirlItems">
+  		
+  	</ul>
   	
   	<h3>Parent:</h3>
   	<ul>

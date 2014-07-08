@@ -44,6 +44,64 @@ $(function () {
 	}
 	window.Scenes.Jobs = _Jobs
 // end jobs.js
+
+	var Studies = [
+		{ 
+			name: "Meditation", 
+			changes: {stress: -1, energy: -1, health: +1},
+			pay: -5,
+			htmlcontent: "Meditating worries away."		
+		},
+	]
+	
+	var _Studies = []
+	
+	for (var i in Studies) {
+		_Studies.push(window.Game.BuildScene(Scenes.fn.BuildJob(Studies[i])));		
+	}
+	window.Scenes.Studies = _Studies;
+	
+	var ShopItems = [
+		{name: "demoknife", price: 10,  stats: {attack: 1, speed: 3, weight: 0.3}},
+		{name: "demosword", price: 100, stats: {attack: 3, speed: 5, weight: 0.6}},
+	];
+		
+		
+	window.Game.Shop = {};
+	window.Game.Shop.Items = ShopItems;
+	window.Scenes.Shop = Game.BuildScene({		
+		type: "html",
+		htmlcontent: $("#ShopTemplate").html(),
+		containerstyle: "", 
+		containerclass: "shop",
+		Execute: function(self) {
+			for (var i in window.Game.Shop.Items) {
+				self.$container.first("#ShopItems").append(
+					["<li id='Item", i ,"'>",  
+						ShopItems[i].name, " :", ShopItems[i].price, " GP", "</li>"].join(""));
+				self.$container.click(function(){self.End()});
+			};	
+			
+			// which item did we buy? TODO
+			self.$container.first("#ShopItems li").click(function(item) {
+				
+				var index = item.target.id.slice(4);
+				var titem = window.Game.Shop.Items[index];				
+				console.log(titem);				
+				if (titem.price <= window.Game.Parent.wealth) {
+					window.Game.Parent.wealth -= titem.price;
+					window.Game.Girl.items.push(titem);
+					console.log(window.Game.Girl);
+					alert(["Bought ", item.target.innerHTML].join(""));		
+				} else {
+					alert("Could not afford item!")
+				}
+				
+				
+			});
+		},
+		
+	});
 	
 	// Girl here
 	window.Game.Girl = {
@@ -51,12 +109,13 @@ $(function () {
 		power: 10,
 		health: 10,
 		energy: 10,
-		empathy: 10
+		empathy: 10,
+		items: [],
 	}; 
 	
 	window.Game.Parent = {
 		income: 10,
-		wealth: 0
+		wealth: 0,
 	}
 	
 	window.Scenes.Statistics = Game.BuildScene({
@@ -73,6 +132,7 @@ $(function () {
 						);
 					}
 				}
+								
 				for (var i in Game.Parent) {
 					if (undefined != i) {
 						self.$container.html(
@@ -80,6 +140,17 @@ $(function () {
 						);
 					}
 				}
+				
+				var items = Game.Girl.items
+				for (var i in Game.Girl.items) {
+					if (undefined != i) {
+						self.$container.first("#GirlItems").append(
+					["<li id='Item", i ,"'>",  
+						items[i].name, " ",  "</li>"].join(""));
+					}
+					
+				}
+
 			} 
 		});
 })

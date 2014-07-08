@@ -81,6 +81,8 @@ $(document).ready(function () {
 		  		//Scenes[0].Play();
 		  		self.End();
 		  	});		
+		  	
+		  	
 		  } 
 		}).Play();
 		

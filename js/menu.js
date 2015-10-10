@@ -27,8 +27,10 @@ $(function () {
 	
 	/* callback */
 	var PlayScene = function(i, scenesource) {
-		console.log(scenesource[i].name, i);
-		scenesource[i].Play();
+		return function() {
+			console.log(scenesource[i].name, i);
+			scenesource[i].Play();
+		}
 	}
 	
 	var activateClickEvents = function (scenesource) {
@@ -36,7 +38,7 @@ $(function () {
 			var name = scenesource[i].name;
 			if (undefined != name) {
 				//console.log('#scene'+ name);
-				$("#scene" + name).click(function(clickevent) { console.log(i, scenesource); PlayScene(i, scenesource); });
+				$("#scene" + name).click(PlayScene(i, scenesource));
 			}
 		}
 	}

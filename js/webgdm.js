@@ -6,11 +6,15 @@ $(function () {
 	var limitRuntime = window.Scenes.fn.limitRuntime;
 	
 	var execJobOrTraining = function (self) {
+		if (undefined !== self.Custom) {
+			self.Custom(self);
+		}
 		for(var i in self.changes) {
 			window.Game.Girl[i] += self.changes[i];	
 		}
 		window.Game.Parent.wealth += self.pay;
 		limitRuntime(self);
+		
 	}
 	
 	Scenes.fn.execJobOrTraining = execJobOrTraining;
@@ -35,6 +39,14 @@ $(function () {
             pay: 5,
             htmlcontent: "Working hard at farming... (could play an animation or show an image here)",                 
 	     },
+	     {   
+        	name: "Gambling",     	
+            changes: {stress: 2, energy: -2},
+            pay: 0,
+            htmlcontent: "Working hard at gambling... (could play an animation or show an image here)",
+            Custom: function (self) { self.pay = Math.floor(Math.random(20))}                  
+	     },
+	     
 	]
 	
 	var _Jobs = []

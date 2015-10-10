@@ -108,6 +108,10 @@ $(document).ready(function () {
             }
             
             return scene; 
+        },
+        
+        onHeartBeat: function(callback) {
+        	Game._heartbeat_queue.push(callback);
         }
     }
 

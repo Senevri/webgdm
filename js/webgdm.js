@@ -1,8 +1,8 @@
 /**
  * @author Esa
  */
-
 $(function () {
+	"use strict";
 	var limitRuntime = window.Scenes.fn.limitRuntime;
 	
 	var execJobOrTraining = function (self) {
@@ -103,6 +103,21 @@ $(function () {
 		
 	});
 	
+	/*
+	window.Scenes.Inventory = Game.BuildScene({
+		type: "html",
+		htmlcontent: $("#InventoryTemplate").html(),
+		containerstyle: "",
+		containerclass: "inventory",
+		Execute: function(self) {
+			for (var i in window.Game.Girl.items) {
+				
+				
+			}
+		},
+		
+	});*/
+	
 	// Girl here
 	window.Game.Girl = {
 		stress: 10, 
@@ -119,6 +134,7 @@ $(function () {
 	}
 	
 	window.Scenes.Statistics = Game.BuildScene({
+		console.log("build statistics");
 			type: "html",
 			htmlcontent: $("#StatsTemplate").html(),
 			containerstyle: "",
@@ -141,16 +157,29 @@ $(function () {
 					}
 				}
 				
+				/*var getItemStats = function(itemstats) {
+							list = [],
+							for (var key in itemstats) {
+								list.push([key, ":", itemstats[key]].join(""));
+							}
+							console.log(list);
+							return list.join(" ");
+				};*/
+						
 				var items = Game.Girl.items
+				console.log(self);
+				console.log(self.$container);
 				for (var i in Game.Girl.items) {
-					if (undefined != i) {
-						self.$container.first("#GirlItems").append(
-					["<li id='Item", i ,"'>",  
-						items[i].name, " ",  "</li>"].join(""));
+					if (undefined != i) {						
+						var itemstr = ["<li id='Item", i ,"'>",  
+							items[i].name, " ", 
+							 "</li>"].join("");
+						self.$container.find("#GirlItems").append(itemstr);
+							
 					}
 					
 				}
 
 			} 
 		});
-})
+});

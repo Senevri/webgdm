@@ -68,7 +68,7 @@ $(document).ready(function () {
 	
 	//console.log(Scenes[0]);
 	//Scenes[0].Play();
-	console.log($('#menustyle').html());
+	//console.log($('#menustyle').html());
 	
 	Scenes.startMenu = window.Game.BuildScene({		
 		  name: "StartMenu",

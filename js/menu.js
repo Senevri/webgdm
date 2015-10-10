@@ -14,7 +14,7 @@ $(function () {
 		selector.htmlcontent = "<ul>"
 			
 		for(var i in scenesource) {
-			console.log(i)
+			//console.log(i)
 			var name = scenesource[i].name;
 			if (undefined != name) {
 				//selector.htmlcontent += '<li onClick="window.Scenes.Jobs[' + i + '].Play()">' + name + "</li>";
@@ -22,15 +22,21 @@ $(function () {
 			}
 		}
 		selector.htmlcontent += "</ul>"
-		console.log(selector.htmlcontent);
 		return selector;
 	}
 	
+	/* callback */
+	var PlayScene = function(i, scenesource) {
+		console.log(scenesource[i].name, i);
+		scenesource[i].Play();
+	}
+	
 	var activateClickEvents = function (scenesource) {
-		for (var i in scenesource) {
+		for (var i in scenesource) {			
 			var name = scenesource[i].name;
 			if (undefined != name) {
-				$("#scene" + name).click(function() { scenesource[i].Play() });
+				//console.log('#scene'+ name);
+				$("#scene" + name).click(function(clickevent) { console.log(i, scenesource); PlayScene(i, scenesource); });
 			}
 		}
 	}

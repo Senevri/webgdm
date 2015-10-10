@@ -29,8 +29,6 @@ $(function () {
 	}
 	
 	
-		
-	
 	//jobs.js
 	var Jobs = [
 	     {   
@@ -44,7 +42,7 @@ $(function () {
             changes: {stress: 2, energy: -2},
             pay: 0,
             htmlcontent: "Working hard at gambling... (could play an animation or show an image here)",
-            Custom: function (self) { self.pay = Math.floor(Math.random(20))}                  
+            Custom: function (self) { self.pay = Math.floor(Math.random()*20)}                  
 	     },
 	     
 	]
@@ -145,8 +143,8 @@ $(function () {
 		wealth: 0,
 	}
 	
-	window.Scenes.Statistics = Game.BuildScene({
-		console.log("build statistics");
+	console.log("build statistics");
+	window.Scenes.Statistics = Game.BuildScene({		
 			type: "html",
 			htmlcontent: $("#StatsTemplate").html(),
 			containerstyle: "",
@@ -169,14 +167,14 @@ $(function () {
 					}
 				}
 				
-				/*var getItemStats = function(itemstats) {
-							list = [],
-							for (var key in itemstats) {
-								list.push([key, ":", itemstats[key]].join(""));
-							}
-							console.log(list);
-							return list.join(" ");
-				};*/
+				var getItemStats = function(itemstats) {			
+					var list = [];
+					for (var key in itemstats) {
+						list.push([key, ":", itemstats[key]].join(""));
+					}
+					console.log(list);
+					return list.join(" ");
+				};
 						
 				var items = Game.Girl.items
 				console.log(self);
@@ -185,7 +183,7 @@ $(function () {
 					if (undefined != i) {						
 						var itemstr = ["<li id='Item", i ,"'>",  
 							items[i].name, " ", 
-							 "</li>"].join("");
+							getItemStats(items[i].stats), "</li>"].join("");
 						self.$container.find("#GirlItems").append(itemstr);
 							
 					}
